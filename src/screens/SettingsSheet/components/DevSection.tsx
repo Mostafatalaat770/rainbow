@@ -37,7 +37,7 @@ import {
 import { ImgixImage } from '@/components/images';
 import { wipeKeychain } from '@/model/keychain';
 import {
-  clearAllStoragesApartFromNotificationsStorage,
+  clearAllStoragesThatCanBeCleared,
   clearNotificationsStorage,
 } from '@/model/mmkv';
 import { Navigation } from '@/navigation';
@@ -240,7 +240,7 @@ const DevSection = () => {
     AsyncStorage.getAllKeys()
       .then(keys => AsyncStorage.multiGet(keys))
       .then(console.log);
-    clearAllStoragesApartFromNotificationsStorage();
+    clearAllStoragesThatCanBeCleared();
     setLoadingStates(prev => ({ ...prev, clearLocalStorage: false }));
   };
 
@@ -252,7 +252,7 @@ const DevSection = () => {
 
   const clearMMKVStorage = async () => {
     setLoadingStates(prev => ({ ...prev, clearMmkvStorage: true }));
-    clearAllStoragesApartFromNotificationsStorage();
+    clearAllStoragesThatCanBeCleared();
     setLoadingStates(prev => ({ ...prev, clearMmkvStorage: false }));
   };
 
